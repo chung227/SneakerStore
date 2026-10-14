@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneaker Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Sneaker Store
+
+        <span id="welcome"></span>
+        </div>
+
+
+        <nav>
+            <a href="index.html">Trang chủ</a>
+            <a href="gioithieu.html">Giới thiệu</a>
+            <a href="sanpham.html">Sản phẩm</a>
+            <a href="blog.html">Blog</a>
+            <a href="lienhe.html">Liên hệ</a>
+            <a href="dangnhap.html">Đăng Nhập</a>
+            <a href="dangky.html">Đăng ký</a>
+        </nav>
+    </header>
+
+    <div class="banner">
+        <div>
+            <h1>BỘ SƯU TẬP GIÀY MỚI 2026</h1>
+            <p>Sneaker - Fashion Shoes - Sport</p>
+            <a class="btn" href="sanpham.html">Mua ngay</a>
+        </div>
+    </div>
+
+    <section>
+        <h2>Sản phẩm nổi bật</h2>
+
+        <div class="products">
+            <div class="card">
+                <a class="product-image-link" href="chitiet.html?sp=giay1">
+                    <img src="images/giay1.jpg" alt="Giày Samba OG">
+                </a>
+
+                <h3>Giày Samba OG</h3>
+                <p>2.900.000 VNĐ</p>
+
+                <a class="btn" href="chitiet.html?sp=giay1">Xem sản phẩm</a>
+            </div>
+
+            <div class="card">
+                <a class="product-image-link" href="chitiet.html?sp=giay2">
+                    <img src="images/giay2.jpg" alt="Jordan 1 Retro High Bred Toe">
+                </a>
+
+                <h3>Jordan 1 Retro High Bred Toe</h3>
+                <p>6.500.000 VNĐ</p>
+
+                <a class="btn" href="chitiet.html?sp=giay2">Xem sản phẩm</a>
+            </div>
+
+            <div class="card">
+                <a class="product-image-link" href="chitiet.html?sp=giay3">
+                    <img src="images/giay3.jpg" alt="Giày thể thao Sport">
+                </a>
+
+                <h3>Giày nike</h3>
+                <p>2.000.000 VNĐ</p>
+
+                <a class="btn" href="chitiet.html?sp=giay3">Xem sản phẩm</a>
+            </div>
+
+            <div class="card">
+                <a class="product-image-link" href="chitiet.html?sp=giay4">
+                    <img src="images/giay4.jpg" alt="Nike Dunk Low Panda Black White">
+                </a>
+
+                <h3>Nike Dunk Low Panda Black White</h3>
+                <p>3.100.000 VNĐ</p>
+
+                <a class="btn" href="chitiet.html?sp=giay4">Xem sản phẩm</a>
+            </div>
+
+            <div class="card">
+                <a class="product-image-link" href="chitiet.html?sp=giay5">
+                    <img src="images/giay5.jpg" alt="Giày chạy bộ">
+                </a>
+
+                <h3>Giày chạy bộ</h3>
+                <p>1.350.000 VNĐ</p>
+
+                <a class="btn" href="chitiet.html?sp=giay5">Xem sản phẩm</a>
+            </div>
+
+            <div class="card">
+                <a class="product-image-link" href="chitiet.html?sp=dep1">
+                    <img src="images/dep1.jpg" alt="Adidas Mens Adilette Shower">
+                </a>
+
+                <h3>Adidas Mens Adilette Shower</h3>
+                <p>1.200.000 VNĐ</p>
+
+                <a class="btn" href="chitiet.html?sp=dep1">Xem sản phẩm</a>
+            </div>
+
+            <div class="card">
+                <a class="product-image-link" href="chitiet.html?sp=dep2">
+                    <img src="images/dep2.jpg" alt="Dép Adilette Comfort 2.0">
+                </a>
+
+                <h3>Dép Adilette Comfort 2.0</h3>
+                <p>950.000 VNĐ</p>
+
+                <a class="btn" href="chitiet.html?sp=dep2">Xem sản phẩm</a>
+            </div>
+
+            <div class="card">
+                <a class="product-image-link" href="chitiet.html?sp=dep3">
+                    <img src="images/dep3.jpg" alt="Dép Casual">
+                </a>
+
+                <h3>Dép Casual</h3>
+                <p>750.000 VNĐ</p>
+
+                <a class="btn" href="chitiet.html?sp=dep3">Xem sản phẩm</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        Sneaker Store ©2026
+    </footer>
+
+    <script>
+
+let username = localStorage.getItem("username");
+
+
+if(username){
+
+document.getElementById("welcome").innerHTML =
+" | Xin chào " + username;
+
+}
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Sneaker Store</div>
+        <nav>
+            <a href="index.html">Trang chủ</a>
+            <a href="gioithieu.html">Giới thiệu</a>
+            <a href="sanpham.html">Sản phẩm</a>
+            <a href="blog.html">Blog</a>
+            <a href="lienhe.html">Liên hệ</a>
+            <a href="dangnhap.html">Đăng nhập</a>
+            <a href="dangky.html">Đăng ký</a>
+            <a href="dangxuat.html">Đăng xuất</a>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Chi tiết sản phẩm</h2>
+
+        <div class="detail-box">
+            <div class="detail-image">
+                <img id="product-image" src="images/giay1.jpg" alt="Sản phẩm">
+            </div>
+
+            <div class="detail-info">
+                <h1 id="product-name">Giày Samba OG</h1>
+
+                <p id="product-description">
+                    Samba OG mang phong cách cổ điển đặc trưng với dáng thấp gọn gàng,
+                    dễ phối cùng quần jeans, quần kaki hoặc trang phục thường ngày.
+                </p>
+
+                <h3 id="product-price">2.900.000 VNĐ</h3>
+
+                <a class="btn" href="sanpham.html">Quay lại sản phẩm</a>
+                <a class="btn" id="buy-now-btn" href="muahang.html">Mua ngay</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        Sneaker Store ©2026
+    </footer>
+
+    <script>
+        const products = {
+            giay1: {
+                name: 'Giày Samba OG',
+                price: '2.900.000 VNĐ',
+                image: 'images/giay1.jpg',
+                description: 'Samba OG mang phong cách cổ điển đặc trưng với dáng thấp gọn gàng, dễ phối cùng quần jeans, quần kaki hoặc trang phục thường ngày.'
+            },
+            giay2: {
+                name: 'Jordan 1 Retro High Bred Toe',
+                price: '6.500.000 VNĐ',
+                image: 'images/giay2.jpg',
+                description: 'Jordan 1 Retro High Bred Toe nổi bật với thiết kế cổ cao cá tính và phối màu mạnh mẽ, phù hợp với người yêu phong cách sneaker đường phố.'
+            },
+            giay3: {
+                name: 'Giày thể thao Sport',
+                price: '950.000 VNĐ',
+                image: 'images/giay3.jpg',
+                description: 'Mẫu giày thể thao Sport có thiết kế năng động, trọng lượng nhẹ và phù hợp cho các hoạt động đi bộ, tập luyện hoặc sử dụng hằng ngày.'
+            },
+            giay4: {
+                name: 'Nike Dunk Low Panda Black White',
+                price: '1.100.000 VNĐ',
+                image: 'images/giay4.jpg',
+                description: 'Nike Dunk Low Panda Black White sử dụng hai tông đen trắng dễ phối đồ, kiểu dáng trẻ trung và phù hợp với nhiều phong cách thời trang.'
+            },
+            giay5: {
+                name: 'Giày chạy bộ',
+                price: '1.350.000 VNĐ',
+                image: 'images/giay5.jpg',
+                description: 'Giày chạy bộ được thiết kế hướng đến sự thoải mái khi di chuyển, kiểu dáng gọn nhẹ và phù hợp cho chạy bộ hoặc vận động thường xuyên.'
+            },
+            dep1: {
+                name: 'Adidas Mens Adilette Shower',
+                price: '500.000 VNĐ',
+                image: 'images/dep1.jpg',
+                description: 'Adidas Mens Adilette Shower có thiết kế đơn giản với quai ngang đặc trưng, phù hợp đi chơi, đi biển hoặc sử dụng sau khi tập luyện.'
+            },
+            dep2: {
+                name: 'Dép Adilette Comfort 2.0',
+                price: '650.000 VNĐ',
+                image: 'images/dep2.jpg',
+                description: 'Adilette Comfort 2.0 hướng đến cảm giác êm ái khi sử dụng, kiểu dáng hiện đại và thích hợp cho nhu cầu đi lại hằng ngày.'
+            },
+            dep3: {
+                name: 'Dép Casual',
+                price: '450.000 VNĐ',
+                image: 'images/dep3.jpg',
+                description: 'Dép Casual có phong cách đơn giản, tiện lợi và dễ sử dụng trong nhiều hoàn cảnh như ở nhà, đi dạo hoặc đi chơi cuối tuần.'
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get('sp') || 'giay1';
+        const product = products[productId] || products.giay1;
+
+        document.getElementById('product-image').src = product.image;
+        document.getElementById('product-image').alt = product.name;
+        document.getElementById('product-name').textContent = product.name;
+        document.getElementById('product-description').textContent = product.description;
+        document.getElementById('product-price').textContent = product.price;
+        document.title = product.name + ' - Sneaker Store';
+
+        // Truyền đúng mã sản phẩm sang trang mua hàng.
+        const buyNowBtn = document.getElementById('buy-now-btn');
+        buyNowBtn.href = 'muahang.html?sp=' + productId;
+
+        // Lưu thêm mã sản phẩm để trang mua hàng vẫn nhận đúng sản phẩm
+        // trong trường hợp trình duyệt mở trang mà không còn query string.
+        buyNowBtn.addEventListener('click', function () {
+            localStorage.setItem('selectedProduct', productId);
+        });
+    </script>
+
+</body>
+
+</html>

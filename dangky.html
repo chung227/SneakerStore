@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký | Sneaker Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #111;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            color: #ff6600;
+        }
+
+        .register-page {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+        }
+
+        .register-wrapper {
+            width: 100%;
+            max-width: 1080px;
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.10);
+        }
+
+        .register-banner {
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)),
+                linear-gradient(135deg, #1b1b1b 0%, #2e2e2e 45%, #ff6600 100%);
+            color: white;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .register-badge {
+            display: inline-block;
+            width: fit-content;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.14);
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+        }
+
+        .register-banner h1 {
+            font-size: 40px;
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .register-banner p {
+            color: rgba(255,255,255,0.88);
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .register-benefits {
+            list-style: none;
+        }
+
+        .register-benefits li {
+            margin-bottom: 14px;
+            line-height: 1.6;
+            padding-left: 30px;
+            position: relative;
+            color: rgba(255,255,255,0.94);
+        }
+
+        .register-benefits li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+        }
+
+        .register-form-box {
+            padding: 42px 40px;
+        }
+
+        .register-heading {
+            margin-bottom: 28px;
+        }
+
+        .register-heading h2 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .register-heading p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .register-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .register-group {
+            margin-bottom: 18px;
+        }
+
+        .register-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .register-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .register-group input {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .register-group input:focus {
+            border-color: #ff6600;
+            box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.10);
+        }
+
+        .password-wrap {
+            position: relative;
+        }
+
+        .password-wrap input {
+            padding-right: 50px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .register-agree {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #555;
+            line-height: 1.5;
+            margin-top: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .register-agree input {
+            accent-color: #ff6600;
+            margin-top: 3px;
+        }
+
+        .register-btn {
+            width: 100%;
+            border: none;
+            background: #111;
+            color: white;
+            padding: 15px 18px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .register-btn:hover {
+            background: #ff6600;
+            transform: translateY(-1px);
+        }
+
+        #registerMessage {
+            min-height: 22px;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .register-success {
+            color: #16803c;
+        }
+
+        .register-error {
+            color: #d93025;
+        }
+
+        .login-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .login-switch a {
+            color: #ff6600;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-switch a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 22px;
+            margin-top: auto;
+        }
+
+        @media (max-width: 900px) {
+            .register-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .register-banner {
+                padding: 35px 28px;
+            }
+
+            .register-form-box {
+                padding: 35px 28px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            nav {
+                margin-top: 12px;
+                width: 100%;
+            }
+
+            nav a {
+                margin: 6px 8px;
+            }
+
+            .register-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .register-banner h1 {
+                font-size: 31px;
+            }
+
+            .register-heading h2 {
+                font-size: 28px;
+            }
+
+            .register-form-box {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Sneaker Store</div>
+        <nav>
+            <a href="index.html">Trang chủ</a>
+            <a href="gioithieu.html">Giới thiệu</a>
+            <a href="sanpham.html">Sản phẩm</a>
+            <a href="blog.html">Blog</a>
+            <a href="lienhe.html">Liên hệ</a>
+            <a href="dangnhap.html">Đăng nhập</a>
+            <a href="dangky.html">Đăng ký</a>
+            <a href="dangxuat.html">Đăng xuất</a>
+        </nav>
+    </header>
+
+    <main class="register-page">
+        <div class="register-wrapper">
+            <div class="register-banner">
+                <span class="register-badge">SNEAKER STORE MEMBER</span>
+                <h1>Gia nhập cộng đồng yêu sneaker</h1>
+                <p>
+                    Tạo tài khoản để mua sắm nhanh hơn, lưu sản phẩm yêu thích
+                    và nhận thông tin về các bộ sưu tập mới nhất.
+                </p>
+
+                <ul class="register-benefits">
+                    <li>Lưu sản phẩm yêu thích và theo dõi đơn hàng dễ dàng</li>
+                    <li>Nhận thông báo ưu đãi, mẫu giày mới và chương trình giảm giá</li>
+                    <li>Trải nghiệm mua sắm nhanh chóng, tiện lợi như website thời trang hiện đại</li>
+                </ul>
+            </div>
+
+            <div class="register-form-box">
+                <div class="register-heading">
+                    <h2>Đăng ký tài khoản</h2>
+                    <p>Điền thông tin bên dưới để bắt đầu mua sắm cùng Sneaker Store.</p>
+                </div>
+
+                <form id="registerForm">
+                    <div class="register-grid">
+                        <div class="register-group">
+                            <label for="fullname">Họ và tên</label>
+                            <input type="text" id="fullname" placeholder="Nhập họ và tên" required>
+                        </div>
+
+                        <div class="register-group">
+                            <label for="newUser">Tên đăng nhập</label>
+                            <input type="text" id="newUser" placeholder="Nhập tên đăng nhập" required>
+                        </div>
+
+                        <div class="register-group full">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Nhập email của bạn" required>
+                        </div>
+
+                        <div class="register-group">
+                            <label for="newPass">Mật khẩu</label>
+                            <div class="password-wrap">
+                                <input type="password" id="newPass" placeholder="Nhập mật khẩu" required>
+                                <button type="button" class="toggle-password" data-target="newPass">👁</button>
+                            </div>
+                        </div>
+
+                        <div class="register-group">
+                            <label for="confirmPass">Nhập lại mật khẩu</label>
+                            <div class="password-wrap">
+                                <input type="password" id="confirmPass" placeholder="Nhập lại mật khẩu" required>
+                                <button type="button" class="toggle-password" data-target="confirmPass">👁</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label class="register-agree">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <span>Tôi đồng ý với điều khoản sử dụng và chính sách bảo mật của Sneaker Store.</span>
+                    </label>
+
+                    <button type="submit" class="register-btn">Tạo tài khoản</button>
+                    <p id="registerMessage"></p>
+                </form>
+
+                <div class="login-switch">
+                    Đã có tài khoản?
+                    <a href="dangnhap.html">Đăng nhập ngay</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>Sneaker Store ©2026</footer>
+
+    <script>
+        const registerForm = document.getElementById("registerForm");
+        const newUser = document.getElementById("newUser");
+        const newPass = document.getElementById("newPass");
+        const confirmPass = document.getElementById("confirmPass");
+        const registerMessage = document.getElementById("registerMessage");
+        const agreeTerms = document.getElementById("agreeTerms");
+        const toggleButtons = document.querySelectorAll(".toggle-password");
+
+        toggleButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                const input = document.getElementById(button.dataset.target);
+                const hidden = input.type === "password";
+                input.type = hidden ? "text" : "password";
+                button.textContent = hidden ? "🙈" : "👁";
+            });
+        });
+
+        registerForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById("fullname").value.trim();
+            const user = newUser.value.trim();
+            const email = document.getElementById("email").value.trim();
+            const pass = newPass.value.trim();
+            const confirm = confirmPass.value.trim();
+
+            if (fullName === "" || user === "" || email === "" || pass === "" || confirm === "") {
+                registerMessage.textContent = "Vui lòng nhập đầy đủ thông tin.";
+                registerMessage.className = "register-error";
+                return;
+            }
+
+            if (user.length < 4) {
+                registerMessage.textContent = "Tên đăng nhập phải có ít nhất 4 ký tự.";
+                registerMessage.className = "register-error";
+                return;
+            }
+
+            if (pass.length < 6) {
+                registerMessage.textContent = "Mật khẩu phải có ít nhất 6 ký tự.";
+                registerMessage.className = "register-error";
+                return;
+            }
+
+            if (pass !== confirm) {
+                registerMessage.textContent = "Mật khẩu nhập lại không khớp.";
+                registerMessage.className = "register-error";
+                return;
+            }
+
+            if (!agreeTerms.checked) {
+                registerMessage.textContent = "Bạn cần đồng ý với điều khoản sử dụng.";
+                registerMessage.className = "register-error";
+                return;
+            }
+
+            localStorage.setItem("account", user);
+            localStorage.setItem("password", pass);
+            localStorage.setItem("fullname", fullName);
+            localStorage.setItem("email", email);
+
+            registerMessage.textContent = "✓ Đăng ký thành công! Đang chuyển sang trang đăng nhập...";
+            registerMessage.className = "register-success";
+
+            setTimeout(function() {
+                window.location.href = "dangnhap.html";
+            }, 1200);
+        });
+    </script>
+</body>
+</html>

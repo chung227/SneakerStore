@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Đăng nhập</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+Sneaker Store
+</div>
+
+
+<nav>
+
+<a href="index.html">Trang chủ</a>
+<a href="gioithieu.html">Giới thiệu</a>
+<a href="sanpham.html">Sản phẩm</a>
+<a href="blog.html">Blog</a>
+<a href="lienhe.html">Liên hệ</a>
+<a href="dangnhap.html">Đăng nhập</a>
+<a href="dangky.html">Đăng ký</a>
+<a href="dangxuat.html">Đăng xuất</a>
+
+</nav>
+
+</header>
+
+
+
+<main class="login-page">
+    <div class="login-box">
+
+        <div class="login-heading">
+            <h2>Đăng nhập tài khoản</h2>
+            <p>Chào mừng bạn quay trở lại Sneaker Store</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="login-group">
+                <label for="username">Tên đăng nhập</label>
+                <input
+                    id="username"
+                    type="text"
+                    placeholder="Nhập tên đăng nhập"
+                    required
+                >
+            </div>
+
+            <div class="login-group">
+                <label for="password">Mật khẩu</label>
+
+                <div class="password-box">
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="Nhập mật khẩu"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        id="togglePassword"
+                        class="show-password"
+                        aria-label="Hiện mật khẩu"
+                    >👁</button>
+                </div>
+            </div>
+
+            <div class="login-options">
+                <label class="remember">
+                    <input type="checkbox" id="rememberMe">
+                    Ghi nhớ đăng nhập
+                </label>
+
+                <a href="#" id="forgotPassword">Quên mật khẩu?</a>
+            </div>
+
+            <button type="submit" class="login-btn">
+                Đăng nhập
+            </button>
+
+            <p id="loginMessage"></p>
+        </form>
+
+        <div class="register-link">
+            Chưa có tài khoản?
+            <a href="dangky.html">Đăng ký ngay</a>
+        </div>
+
+    </div>
+</main>
+
+
+
+
+<footer>
+
+Sneaker Store ©2026
+
+</footer>
+
+
+
+
+
+<script>
+const loginForm = document.getElementById("loginForm");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+const togglePassword = document.getElementById("togglePassword");
+const loginMessage = document.getElementById("loginMessage");
+const rememberMe = document.getElementById("rememberMe");
+const forgotPassword = document.getElementById("forgotPassword");
+
+togglePassword.addEventListener("click", function () {
+    const isHidden = passwordInput.type === "password";
+
+    passwordInput.type = isHidden ? "text" : "password";
+    togglePassword.textContent = isHidden ? "🙈" : "👁";
+    togglePassword.setAttribute(
+        "aria-label",
+        isHidden ? "Ẩn mật khẩu" : "Hiện mật khẩu"
+    );
+});
+
+loginForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (username === "" || password === "") {
+        loginMessage.textContent = "Vui lòng nhập đầy đủ thông tin.";
+        loginMessage.className = "login-error";
+        return;
+    }
+
+    const savedAccount = localStorage.getItem("account");
+    const savedPassword = localStorage.getItem("password");
+
+    if (savedAccount && savedPassword) {
+        if (username !== savedAccount || password !== savedPassword) {
+            loginMessage.textContent = "Tên đăng nhập hoặc mật khẩu không đúng.";
+            loginMessage.className = "login-error";
+            return;
+        }
+    }
+
+    localStorage.setItem("username", username);
+
+    if (rememberMe.checked) {
+        localStorage.setItem("rememberUsername", username);
+    } else {
+        localStorage.removeItem("rememberUsername");
+    }
+
+    loginMessage.textContent = "✓ Đăng nhập thành công! Đang chuyển về trang chủ...";
+    loginMessage.className = "login-success";
+
+    setTimeout(function () {
+        window.location.href = "index.html";
+    }, 1000);
+});
+
+forgotPassword.addEventListener("click", function (event) {
+    event.preventDefault();
+    loginMessage.textContent =
+        "Bạn có thể đăng ký lại tài khoản mới nếu quên mật khẩu.";
+    loginMessage.className = "login-info";
+});
+
+const rememberedUsername = localStorage.getItem("rememberUsername");
+
+if (rememberedUsername) {
+    usernameInput.value = rememberedUsername;
+    rememberMe.checked = true;
+}
+</script>
+
+</body>
+
+</html>

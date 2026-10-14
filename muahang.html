@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Mua hàng</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+Sneaker Store
+</div>
+
+
+<nav>
+<a href="index.html">Trang chủ</a>
+<a href="gioithieu.html">Giới thiệu</a>
+<a href="sanpham.html">Sản phẩm</a>
+<a href="blog.html">Blog</a>
+<a href="lienhe.html">Liên hệ</a>
+<a href="dangnhap.html">Đăng nhập</a>
+<a href="dangky.html">Đăng ký</a>
+<a href="dangxuat.html">Đăng xuất</a>
+</nav>
+
+
+</header>
+
+
+
+<main class="checkout-page">
+    <div class="checkout-header">
+        <span class="checkout-eyebrow">CHECKOUT</span>
+        <h1>Hoàn tất đơn hàng</h1>
+        <p>Vui lòng kiểm tra thông tin trước khi xác nhận mua hàng.</p>
+    </div>
+
+    <div class="checkout-layout">
+
+        <section class="checkout-form-card">
+            <div class="checkout-step">
+                <div class="step-number">1</div>
+                <div>
+                    <h2>Thông tin giao hàng</h2>
+                    <p>Nhập thông tin để chúng tôi giao hàng chính xác.</p>
+                </div>
+            </div>
+
+            <form id="orderForm">
+                <div class="checkout-grid">
+                    <div class="checkout-group">
+                        <label for="name">Họ và tên</label>
+                        <input type="text" id="name" placeholder="Nhập họ và tên" required>
+                    </div>
+
+                    <div class="checkout-group">
+                        <label for="phone">Số điện thoại</label>
+                        <input type="tel" id="phone" placeholder="Nhập số điện thoại" required>
+                    </div>
+
+                    <div class="checkout-group full">
+                        <label for="address">Địa chỉ nhận hàng</label>
+                        <textarea id="address" rows="4" placeholder="Số nhà, đường, phường/xã, quận/huyện..." required></textarea>
+                    </div>
+                </div>
+
+                <div class="checkout-divider"></div>
+
+                <div class="checkout-step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h2>Thông tin sản phẩm</h2>
+                        <p>Chọn kích thước phù hợp trước khi đặt hàng.</p>
+                    </div>
+                </div>
+
+                <div class="checkout-product-box">
+                    <div class="checkout-product-image">
+                        <img id="checkoutProductImage" src="images/giay1.jpg" alt="Giày Sneaker">
+                    </div>
+
+                    <div class="checkout-product-info">
+                        <span class="product-mini-label">SNEAKER STORE</span>
+                        <h3 id="checkoutProductName">Giày Sneaker</h3>
+                        <p class="checkout-product-desc">Mẫu sneaker thời trang, phù hợp đi học, đi chơi và sử dụng hằng ngày.</p>
+
+                        <div class="checkout-select-row">
+                            <div class="checkout-group">
+                                <label for="size">Size giày</label>
+                                <select id="size">
+                                    <option>Size 38</option>
+                                    <option>Size 39</option>
+                                    <option>Size 40</option>
+                                    <option>Size 41</option>
+                                    <option>Size 42</option>
+                                </select>
+                            </div>
+
+                            <div class="checkout-group">
+                                <label for="quantity">Số lượng</label>
+                                <select id="quantity">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-divider"></div>
+
+                <div class="checkout-step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h2>Phương thức thanh toán</h2>
+                        <p>Chọn phương thức thanh toán phù hợp với bạn.</p>
+                    </div>
+                </div>
+
+                <div class="payment-options">
+                    <label class="payment-option selected">
+                        <input type="radio" name="payment" value="COD" checked>
+                        <div class="payment-icon">💵</div>
+                        <div>
+                            <strong>Thanh toán khi nhận hàng</strong>
+                            <p>Thanh toán bằng tiền mặt khi đơn hàng được giao tới.</p>
+                        </div>
+                    </label>
+
+            
+
+                <button class="checkout-submit" type="submit">Xác nhận đặt hàng</button>
+                <p id="orderMessage"></p>
+            </form>
+        </section>
+
+        <aside class="order-summary">
+            <h2>Đơn hàng của bạn</h2>
+
+            <div class="summary-product">
+                <div class="summary-thumb"><img id="summaryProductImage" src="images/giay1.jpg" alt="Giày Sneaker"></div>
+                <div>
+                    <h3 id="summaryProductName">Giày Sneaker</h3>
+                    <p>Size: <span id="summarySize">38</span></p>
+                    <p>Số lượng: <span id="summaryQty">1</span></p>
+                </div>
+            </div>
+
+            <div class="summary-row">
+                <span>Tạm tính</span>
+                <strong id="subtotalPrice">2.900.000 VNĐ</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Phí vận chuyển</span>
+                <strong>Miễn phí</strong>
+            </div>
+
+            <div class="summary-line"></div>
+
+            <div class="summary-row total">
+                <span>Tổng cộng</span>
+                <strong id="totalPrice">2.900.000 VNĐ</strong>
+            </div>
+
+            <div class="checkout-note">
+                🔒 Thông tin đơn hàng của bạn được bảo mật.
+            </div>
+        </aside>
+
+    </div>
+</main>
+
+
+
+
+<footer>
+
+Sneaker Store ©2026
+
+</footer>
+
+
+
+
+<script>
+const products = {
+    giay1: { name: "Giày Samba OG", price: 2900000, image: "images/giay1.jpg" },
+    giay2: { name: "Jordan 1 Retro High Bred Toe", price: 6500000, image: "images/giay2.jpg" },
+    giay3: { name: "Giày nike", price: 2000000, image: "images/giay3.jpg" },
+    giay4: { name: "Nike Dunk Low Panda Black White", price: 3100000, image: "images/giay4.jpg" },
+    giay5: { name: "Giày chạy bộ", price: 1350000, image: "images/giay5.jpg" },
+    dep1: { name: "Adidas Mens Adilette Shower", price: 1200000, image: "images/dep1.jpg" },
+    dep2: { name: "Dép Adilette Comfort 2.0", price: 950000, image: "images/dep2.jpg" },
+    dep3: { name: "Dép Casual", price: 750000, image: "images/dep3.jpg" }
+};
+
+const params = new URLSearchParams(window.location.search);
+let productKey = params.get("sp") || localStorage.getItem("selectedProduct") || "giay1";
+if (!products[productKey]) productKey = "giay1";
+
+const currentProduct = products[productKey];
+
+const orderForm = document.getElementById("orderForm");
+const sizeSelect = document.getElementById("size");
+const quantitySelect = document.getElementById("quantity");
+const summarySize = document.getElementById("summarySize");
+const summaryQty = document.getElementById("summaryQty");
+const orderMessage = document.getElementById("orderMessage");
+
+const checkoutProductName = document.getElementById("checkoutProductName");
+const checkoutProductImage = document.getElementById("checkoutProductImage");
+const summaryProductName = document.getElementById("summaryProductName");
+const summaryProductImage = document.getElementById("summaryProductImage");
+const subtotalPrice = document.getElementById("subtotalPrice");
+const totalPrice = document.getElementById("totalPrice");
+
+function formatPrice(value) {
+    return value.toLocaleString("vi-VN") + " VNĐ";
+}
+
+function updateTotal() {
+    const quantity = Number(quantitySelect.value);
+    const total = currentProduct.price * quantity;
+    summaryQty.textContent = quantity;
+    subtotalPrice.textContent = formatPrice(total);
+    totalPrice.textContent = formatPrice(total);
+}
+
+function renderProduct() {
+    checkoutProductName.textContent = currentProduct.name;
+    summaryProductName.textContent = currentProduct.name;
+    checkoutProductImage.src = currentProduct.image;
+    checkoutProductImage.alt = currentProduct.name;
+    summaryProductImage.src = currentProduct.image;
+    summaryProductImage.alt = currentProduct.name;
+    updateTotal();
+}
+
+sizeSelect.addEventListener("change", function() {
+    summarySize.textContent = sizeSelect.value.replace("Size ", "");
+});
+
+quantitySelect.addEventListener("change", updateTotal);
+
+document.querySelectorAll(".payment-option").forEach(function(option) {
+    option.addEventListener("click", function() {
+        document.querySelectorAll(".payment-option").forEach(function(item) {
+            item.classList.remove("selected");
+        });
+        option.classList.add("selected");
+    });
+});
+
+orderForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const address = document.getElementById("address").value.trim();
+
+    if (name === "" || phone === "" || address === "") {
+        orderMessage.textContent = "Vui lòng nhập đầy đủ thông tin giao hàng.";
+        orderMessage.className = "order-error";
+        return;
+    }
+
+    if (!/^[0-9]{9,11}$/.test(phone)) {
+        orderMessage.textContent = "Số điện thoại chưa hợp lệ.";
+        orderMessage.className = "order-error";
+        return;
+    }
+
+    const order = {
+        product: productKey,
+        productName: currentProduct.name,
+        price: currentProduct.price,
+        size: sizeSelect.value,
+        quantity: Number(quantitySelect.value),
+        customerName: name,
+        phone: phone,
+        address: address,
+        payment: document.querySelector('input[name="payment"]:checked').value
+    };
+
+    localStorage.setItem("lastOrder", JSON.stringify(order));
+
+    orderMessage.textContent = "✓ Đặt hàng thành công! Sneaker Store sẽ liên hệ xác nhận đơn hàng.";
+    orderMessage.className = "order-success";
+
+    setTimeout(function() {
+        window.location.href = "index.html";
+    }, 1500);
+});
+
+renderProduct();
+</script>
+
+</body>
+</html>
